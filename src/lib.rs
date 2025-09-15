@@ -3,6 +3,7 @@
 
 extern crate test;
 
+
 use test::Bencher;
 
 use std::fs;
@@ -22,6 +23,25 @@ fn read_input(file: &str) -> Vec<u8> {
 fn unsorted(b: &mut Bencher) {
 
     let data = read_input("2.input");
+
+
+    b.iter(|| {
+
+        let mut v = data.clone();
+
+        v.sort();
+
+    });
+
+}
+
+
+#[bench]
+
+fn sorted(b: &mut Bencher) {
+
+    let data = read_input("2.sorted");
+
 
     b.iter(|| {
 
